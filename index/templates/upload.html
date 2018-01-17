@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% if err %}
+<div class="alert alert-danger">
+  {{err}}
+</div>
+{% endif %}
+{% if ok %}
+<div class="alert alert-success">
+  {{ok}}
+</div>
+{% endif %}
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Залить" class="btn btn-primary">
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'auth.html' %}
+{% block 'content' %}
+{% if err %}
+<div class="alert alert-danger">
+{{err}}
+</div>
+{% endif %}
+{% if errors %}
+<div class="alert alert-danger">
+{% for k,err in errors.items %}
+{{err}}
+{% endfor %}
+</div>
+{% endif %}
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Зарегистрироваться" class="btn btn-primary">
+</form>
+{% endblock %}

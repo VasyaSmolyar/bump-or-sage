@@ -1,0 +1,17 @@
+{% extends 'auth.html' %}
+{% block 'content' %}
+{% if err %}
+<div class="alert alert-danger">
+  {{err}}
+</div>
+{% endif %}
+<h3>Войти или <a href="{% url 'myauth:reg' %}">Зарегистрироваться</a></h3>
+<form method="POST">
+  {% csrf_token %}
+  <b>Логин:</b>
+  <input name="login" class="form-control"><br>
+  <b>Пароль:</b>
+  <input name="pwd" type="password" class="form-control"><br>
+  <input type="submit" value="Войти" class="btn btn-primary">
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<h1>TOP {{top}}</h1>
+<div class="row">
+
+  {% for img in imgs %}
+    <div class="col-md-3" style="height: 300px">
+      <img class="img-responsive center-block" src="{{img.img_url}}" alt="" style="max-height: 90%">
+      <div><a href="{% url 'index:userid' img.user.pk %}">{{img.user.username}}</a></div>
+    </div>
+  {% endfor %}
+
+</div>
+<div class="btn-group">
+{% if imgs.has_previous %}
+    <a class="btn btn-default" href="?page=1">1</a>
+    <a class="btn btn-default" href="?page={{ imgs.previous_page_number }}">&laquo&laquo</a>
+{% endif %}
+<button class="btn btn-success">Page {{ imgs.number }}</button>
+{% if imgs.has_next %}
+    <a class="btn btn-default" href="?page={{ imgs.next_page_number }}">&raquo&raquo</a>
+    <a class="btn btn-default" href="?page={{ imgs.paginator.num_pages }}">{{ imgs.paginator.num_pages }}</a>
+{% endif %}
+</div>
+{% endblock %}

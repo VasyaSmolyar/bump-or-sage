@@ -1,0 +1,7 @@
+*.pyc
+*~
+__pucache__
+db.sqlite3
+.DS_Store
+data.jpg
+data.tmp

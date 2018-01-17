@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<h1>{{user.username}}</h1>
+<h3>Rating: {{rating}}</h3>
+<div class="row">
+<h3>Последние картинки: </h3>
+{% for img in imgs %}
+<div class="col-md-3" style="height: 300px">
+  <img class="img-responsive center-block" src="{{img.img_url}}" alt="" style="max-height: 100%">
+</div>
+{% endfor %}
+</div>
+{% endblock %}

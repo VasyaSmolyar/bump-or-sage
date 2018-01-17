@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% if img %}
+<img src="{{img.img_url}}" class="img-responsive center-block" alt="Смешная (или нет) картинка" style="max-height:400px">
+<form action="{% url 'index:pull' img.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" name="vote" value="BUMP" class="btn btn-primary">
+  <input type="submit" name="vote" value="SAGE" class="btn btn-danger">
+</form>
+{% else %}
+<p>На сегодня все картинки закончились!</p>
+{% endif %}
+{% endblock %}
