@@ -56,7 +56,7 @@ def bump(request,bump='bump'):
         imgs = Image.objects.order_by('votes').all()[:100]
     else:
         raise Http404("Страница не найдена")
-    page = Paginator(imgs,2)
+    page = Paginator(imgs,10)
     if 'page' in request.GET:
         pid = request.GET['page']
     else:
