@@ -11,4 +11,6 @@ urlpatterns = [
     path('user/',views.user,name='user'),
     path('user/<int:uid>',views.user,name='userid'),
     path('loadimg/',views.loadimg,name='loadimg'),
+    path('dev/',views.token,name='token'),
+    path('dev/new_token',views.new_token,name='new_token')
 ]

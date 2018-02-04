@@ -9,6 +9,7 @@ from django.db.models import F
 from django.contrib.auth.decorators import login_required
 from .forms import LoadForm
 from .img import check_img
+from api.api_funcs import create,read
 
 # Вспомогательные функиции
 
@@ -61,7 +62,8 @@ def bump(request,bump='bump'):
         pid = request.GET['page']
     else:
         pid = 1
-    return render(request,'list.html',{'imgs' : page.get_page(pid), 'top' : bump.upper()})
+    return render(request,'list.html',{'imgs' : page.get_page(pid),
+     'top' : bump.upper()})
 
 def user(request,uid = 0):
     if uid == 0:
@@ -88,4 +90,13 @@ def loadimg(request):
             return render(request,'upload.html',{'err' : 'Введите адрес картинки', 'form' : form })
     else:
         return render(request,'upload.html',{'form' : LoadForm()})
-        
+
+@login_required
+def token(request):
+    token = read(request.user)
+    return render(request,'api.html',{'token' : token})
+
+@login_required
+def new_token(request):
+    token = create(request.user)
+    return redirect(reverse('index:token'))

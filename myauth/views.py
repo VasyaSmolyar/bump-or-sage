@@ -37,7 +37,9 @@ def auth(request):
             return render(request,'login.html',data)
         else:
             login(request,user)
-            return redirect('index:test')
+            if 'next' in request.GET:
+                return redirect(request.GET['next'])
+            return redirect(reverse('index:index'))
     except KeyError:
         return render(request,'login.html',{})
 

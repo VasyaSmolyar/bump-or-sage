@@ -1,6 +1,6 @@
 *.pyc
 *~
-__pucache__
+__pycache__
 db.sqlite3
 .DS_Store
 data.jpg

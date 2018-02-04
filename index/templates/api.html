@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<h1>Токен API</h1>
+<h3>{{token}}</h3>
+<form action="{% url 'index:new_token' %}">
+  <input type="submit" value="Обновить токен" class="btn btn-danger">
+</form>
+{% endblock %}
